@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Inspired by @breadonpenguins `dmenu_notes` script
 
-folder=$HOME/snippets/
+folder=$HOME/Sync/snippets/
+
 
 pick_snippet () { \
   name="$(echo "" | dmenu -sb "#a3be8c" -nf "#d8dee9" -p "Enter a name: " <&-)" || exit 0
@@ -20,7 +21,7 @@ copy_to_clipboard () {
 
 
 selected () { \
-  choice=$(echo -e "New\n$(command ls -t1 $folder)" | dmenu -l 5 -i -p "Choose note or create new: ")
+  choice=$(echo -e "$(command ls -t1 $folder)" | dmenu -l 5 -i -p "Choose your snippet: ")
   case $choice in
     New) pick_snippet ;;
     *.sh) copy_to_clipboard ;;
